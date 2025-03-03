@@ -34,7 +34,6 @@ def apply_to_jobs():
             logger.log_info("Starting job application process.")
             browser = get_browser(p)
 
-            # ✅ FIXED: Correctly open a new page
             page = browser.new_page()
 
             # Step 1: Log into LinkedIn
