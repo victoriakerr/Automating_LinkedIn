@@ -1,0 +1,85 @@
+2025-02-13 20:45:19,104 - INFO - Starting job application process.
+2025-02-13 20:45:24,737 - ERROR - Error occurred: Page.wait_for_selector: Unexpected token "" while parsing css selector ".search-global-typeahead,". Did you mean to CSS.escape it?
+Call log:
+  - waiting for .search-global-typeahead, to be visible
+
+2025-02-13 20:49:29,487 - INFO - Starting job application process.
+2025-02-13 20:49:34,493 - ERROR - Error occurred: Page.wait_for_selector: Unexpected token "" while parsing css selector ".search-global-typeahead,". Did you mean to CSS.escape it?
+Call log:
+  - waiting for .search-global-typeahead, to be visible
+
+2025-02-13 20:49:42,077 - INFO - Starting job application process.
+2025-02-13 20:49:47,825 - ERROR - Error occurred: Page.wait_for_selector: Unexpected token "" while parsing css selector ".search-global-typeahead,". Did you mean to CSS.escape it?
+Call log:
+  - waiting for .search-global-typeahead, to be visible
+
+2025-02-13 20:49:58,005 - INFO - Starting job application process.
+2025-02-13 20:50:03,413 - ERROR - Error occurred: Page.wait_for_selector: Unexpected token "" while parsing css selector ".search-global-typeahead,". Did you mean to CSS.escape it?
+Call log:
+  - waiting for .search-global-typeahead, to be visible
+
+2025-02-13 21:00:23,509 - INFO - Starting job application process.
+2025-02-13 21:00:39,157 - ERROR - Error occurred: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator(".search-global-typeahead") to be visible
+
+2025-02-13 21:00:51,430 - INFO - Starting job application process.
+2025-02-13 21:01:06,319 - ERROR - Error occurred: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator(".search-global-typeahead") to be visible
+
+2025-02-13 21:01:15,857 - INFO - Starting job application process.
+2025-02-13 21:01:30,695 - ERROR - Error occurred: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator(".search-global-typeahead") to be visible
+
+2025-02-13 23:19:45,863 - INFO - Starting job application process.
+2025-02-13 23:21:36,967 - INFO - Login not detected. Please log in first.
+2025-02-13 23:21:52,284 - INFO - Starting job application process.
+2025-02-13 23:22:35,974 - INFO - Login not detected. Please log in first.
+2025-02-13 23:36:09,373 - INFO - Starting job application process.
+2025-02-13 23:37:13,213 - INFO - Login not detected. Please log in first.
+2025-02-16 12:31:25,954 - INFO - Starting job application process.
+2025-02-24 14:33:41,650 - INFO - Starting job application process.
+2025-02-24 14:34:36,975 - INFO - Starting job application process.
+2025-02-24 14:34:54,757 - ERROR - Error occurred: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator(".search-global-typeahead") to be visible
+
+2025-02-24 21:34:58,347 - INFO - Starting job application process.
+2025-02-24 21:45:38,093 - INFO - Starting job application process.
+2025-02-24 21:46:59,667 - INFO - Starting job application process.
+2025-02-24 21:48:15,147 - INFO - Starting job application process.
+2025-02-24 21:56:06,176 - INFO - Starting job application process.
+2025-02-24 22:30:50,960 - INFO - Starting job application process.
+2025-02-24 22:30:52,499 - ERROR - Error occurred: 'method' object is not subscriptable
+2025-02-25 12:47:36,936 - INFO - Starting job application process.
+2025-02-25 12:47:38,842 - ERROR - Error occurred: 'method' object is not subscriptable
+2025-02-25 12:48:34,640 - INFO - Starting job application process.
+2025-02-25 12:48:36,224 - ERROR - Error occurred: 'method' object is not subscriptable
+2025-02-25 12:50:01,937 - INFO - Starting job application process.
+2025-02-25 12:50:03,524 - ERROR - Error occurred: 'method' object is not subscriptable
+2025-02-25 13:24:10,575 - INFO - Starting job application process.
+2025-02-25 13:24:11,943 - ERROR - Error occurred: 'method' object is not subscriptable
+2025-02-25 13:25:08,154 - INFO - Starting job application process.
+2025-02-25 13:25:09,164 - ERROR - Error occurred: 'method' object is not subscriptable
+2025-02-26 14:16:05,113 - INFO - Starting job application process.
+2025-02-26 14:16:06,003 - ERROR - Error occurred: 'method' object is not subscriptable
+2025-02-26 14:54:42,977 - INFO - Starting job application process.
+2025-02-26 14:55:32,971 - ERROR - Error occurred: Page.wait_for_selector: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='session_key']") to be visible
+
+2025-02-26 14:56:21,484 - INFO - Starting job application process.
+2025-02-26 14:57:02,571 - ERROR - Error occurred: Page.wait_for_selector: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='session_key']") to be visible
+
+2025-02-26 16:08:52,124 - INFO - Starting job application process.
+2025-02-26 16:09:34,380 - ERROR - Error occurred: Page.wait_for_selector: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='session_key']") to be visible
+
+2025-02-26 18:42:52,061 - INFO - Starting job application process.
+2025-02-26 18:44:16,768 - INFO - Starting job application process.
+2025-02-28 15:48:56,662 - INFO - Starting job application process.
