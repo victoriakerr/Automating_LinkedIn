@@ -1,0 +1,19 @@
+# Ignore Playwright persistent session directory
+linkedin_session/
+
+# Ignore log files
+app.log
+*.log
+
+# Ignore Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore environment variables (sensitive credentials)
+.env

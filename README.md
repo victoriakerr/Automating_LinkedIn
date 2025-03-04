@@ -33,6 +33,8 @@ Configuration:
 1. Create a .env file in the project root and add your LinkedIn credentials:
 LINKEDIN_EMAIL=your-email@example.com
 LINKEDIN_PASSWORD=your-password
+JOB_TITLE=Software Engineer
+JOB_LOCATION=South Africa
 
 2. Modify config.py to change job title, location, and other parameters:
 JOB_SEARCH_URL = "https://www.linkedin.com/jobs/search/?keywords=Software%20Engineer&location=South%20Africa"

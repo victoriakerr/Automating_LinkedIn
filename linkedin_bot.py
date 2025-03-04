@@ -4,13 +4,15 @@ import logger
 import getpass
 import random
 import os
+import config
 
-# User input credentials securely
-EMAIL = input("Enter your LinkedIn email: ")
-PASSWORD = getpass.getpass("Enter your LinkedIn password: ")
+# Load credentials from config.py
+EMAIL = config.LINKEDIN_EMAIL or input("Enter your LinkedIn email: ")
+PASSWORD = config.LINKEDIN_PASSWORD or getpass.getpass("Enter your LinkedIn password: ")
 
-default_job_title = "Software Engineer"
-default_job_location = ""
+# Default job title and location from config
+default_job_title = config.JOB_TITLE
+default_job_location = config.JOB_LOCATION
 
 def get_browser(p):
     """Launches Chromium with a persistent session."""
@@ -21,55 +23,66 @@ def get_browser(p):
         headless=False
     )
 
-def keep_alive(page):
-    """Keeps the session active by scrolling periodically."""
-    while True:
-        page.evaluate("window.scrollBy(0, window.innerHeight)")
-        time.sleep(random.randint(100, 180))
+def login_to_linkedin(page):
+    """Logs into LinkedIn using saved credentials."""
+    logger.log_info("Navigating to LinkedIn login page.")
+    page.goto("https://www.linkedin.com/login")
+
+    logger.log_info("Filling in login credentials.")
+    
+    try:
+        page.wait_for_selector(".global-nav__me-photo", timeout=10000)
+        logger.log_info("Login successful.")
+    except Exception as e:
+        logger.log_error("Login failed. Please check credentials or CAPTCHA.")
+        page.screenshot(path="login_failed.png")
+        raise e
+
+def handle_captcha(page):
+    """Handles CAPTCHA if it appears."""
+    captcha_elements = page.locator("div:has-text('security check')").count()
+    if captcha_elements > 0:
+        logger.log_error("CAPTCHA detected! Complete it manually.")
+        input("Press Enter after completing the CAPTCHA and logging in manually...")
+
+def search_for_jobs(page, job_title, job_location):
+    """Construct and navigate to job search page based on input."""
+    logger.log_info(f"Searching for jobs: {job_title} in {job_location if job_location else 'Worldwide'}")
+    job_search_url = f"https://www.linkedin.com/jobs/search/?keywords={job_title.replace(' ', '%20')}"
+    if job_location:
+        job_search_url += f"&location={job_location.replace(' ', '%20')}"
+    
+    page.goto(job_search_url)
+
+    # Wait for job listings to appear
+    try:
+        page.wait_for_selector(".job-card-container", timeout=300000)
+        logger.log_info("Job listings loaded successfully.")
+    except:
+        logger.log_error("No job listings found. Exiting.")
+        raise Exception("No job listings found.")
 
 def apply_to_jobs():
-    """Logs into LinkedIn, searches for jobs, and applies to 'Easy Apply' jobs."""
+    """Main function to automate job applications on LinkedIn."""
     with sync_playwright() as p:
         try:
             logger.log_info("Starting job application process.")
             browser = get_browser(p)
-
             page = browser.new_page()
 
             # Step 1: Log into LinkedIn
-            page.goto("https://www.linkedin.com/login")
+            login_to_linkedin(page)
 
-            page.wait_for_selector("input[name='session_key']")
-            page.fill("input[name='session_key']", EMAIL)
-            time.sleep(random.uniform(2, 4))  # Random delay to mimic human behavior
-            page.fill("input[name='session_password']", PASSWORD)
-            time.sleep(random.uniform(2, 4))
-            page.click("button[type='submit']")
-
-            # Step 2: Ensure login was successful by checking if search bar is visible
-            try:
-                page.wait_for_selector(".search-global-typeahead", timeout=10000)
-                logger.log_info("Login successful.")
-            except:
-                logger.log_error("Login failed. Please check credentials.")
-                browser.close()
-                return
+            # Step 2: Handle CAPTCHA (if detected)
+            handle_captcha(page)
 
             # Step 3: Ask user for job title and location
             job_keyword = input(f"Enter job title ({default_job_title} by default): ") or default_job_title
             job_location = input(f"Enter job location ({default_job_location} for worldwide): ") or default_job_location
 
-            # Construct LinkedIn job search URL dynamically
-            base_url = "https://www.linkedin.com/jobs/search/?keywords="
-            job_search_url = f"{base_url}{job_keyword.replace(' ', '%20')}"
-            if job_location:
-                job_search_url += f"&location={job_location.replace(' ', '%20')}"
+            # Step 4: Search for jobs
+            search_for_jobs(page, job_keyword, job_location)
 
-            logger.log_info(f"Searching jobs for: {job_keyword} in {job_location if job_location else 'Worldwide'}")
-            page.goto(job_search_url)
-            page.wait_for_selector(".job-card-container", timeout=10000)  # Ensure jobs load
-            time.sleep(5)  # Allow job listings to fully load
-            
             job_count = 0
             jobs = page.locator(".job-card-container").element_handles()
 
@@ -77,12 +90,16 @@ def apply_to_jobs():
                 if job_count >= 10:
                     break
                 job.click()
-                time.sleep(random.uniform(3, 5))  # Human-like delay before interacting
+                time.sleep(random.uniform(3, 5))  # Mimic human behavior
 
                 # Check if "Easy Apply" is available
-                if page.locator("button:has-text('Easy Apply')").count() > 0:
-                    page.locator("button:has-text('Easy Apply')").click()
-                    time.sleep(2)
+                easy_apply_buttons = page.locator("button:has-text('Easy Apply')").all()
+                if easy_apply_buttons:
+                    for button in easy_apply_buttons:
+                        if "filter" not in button.get_attribute("aria-label").lower():
+                            button.click()
+                            time.sleep(2)
+                            break
 
                     # Checking if the submit button exists
                     if page.locator("button:has-text('Submit application')").count() > 0:
@@ -92,9 +109,7 @@ def apply_to_jobs():
                         time.sleep(random.uniform(3, 6))
 
             logger.log_info(f"Job application process completed. Applied to {job_count} jobs.")
-
-            # Start keep-alive function after job applications
-            keep_alive(page)
+            browser.close()
 
         except Exception as e:
             logger.log_error(f"Error occurred: {e}")
@@ -102,4 +117,5 @@ def apply_to_jobs():
                 browser.close()
 
 # Run the script
-apply_to_jobs()
+if __name__ == "__main__":
+    apply_to_jobs()

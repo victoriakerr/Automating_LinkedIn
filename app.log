@@ -84,3 +84,206 @@ Call log:
 2025-02-26 18:44:16,768 - INFO - Starting job application process.
 2025-02-28 15:48:56,662 - INFO - Starting job application process.
 2025-03-03 14:44:41,595 - INFO - Starting job application process.
+2025-03-03 18:55:26,905 - INFO - Starting job application process.
+2025-03-03 18:56:12,470 - ERROR - Error occurred: Page.wait_for_selector: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='session_key']") to be visible
+
+2025-03-03 19:16:19,746 - INFO - Starting job application process.
+2025-03-03 19:27:57,717 - INFO - Starting job application process.
+2025-03-03 19:34:41,970 - INFO - Starting job application process.
+2025-03-03 19:34:56,676 - INFO - Waiting for user to confirm login page has loaded...
+2025-03-03 19:35:13,752 - INFO - User pressed Enter. Taking a screenshot for debugging.
+2025-03-03 19:35:14,261 - INFO - Checking if login fields are visible...
+2025-03-03 19:37:26,002 - ERROR - Error occurred: Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("input[name='session_key']") to be visible
+  -     - waiting for" https://www.linkedin.com/feed/" navigation to finish...
+  -     - navigated to "https://www.linkedin.com/feed/"
+
+2025-03-04 13:16:16,567 - INFO - Starting job application process.
+2025-03-04 13:41:58,902 - INFO - Starting job application process.
+2025-03-04 13:42:12,557 - INFO - Waiting for user to confirm login page has loaded...
+2025-03-04 13:42:33,416 - INFO - User pressed Enter. Taking a screenshot for debugging.
+2025-03-04 13:42:33,924 - INFO - Checking if login fields are visible...
+2025-03-04 13:45:29,145 - ERROR - Error occurred: Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("input[name='session_key']") to be visible
+  -     - waiting for" https://www.linkedin.com/uas/logout?csrfToken=ajax%3A0537398765621078060" navigation to finish...
+  -     - navigated to "https://www.linkedin.com/m/logout/"
+  -     - waiting for" https://www.linkedin.com/uas/logout?csrfToken=ajax%3A0537398765621078060" navigation to finish...
+  -     - navigated to "https://www.linkedin.com/home"
+
+2025-03-04 13:55:58,851 - INFO - Starting job application process.
+2025-03-04 13:56:02,344 - INFO - Waiting for user to confirm login page has loaded...
+2025-03-04 13:56:21,783 - INFO - Filling in login credentials.
+2025-03-04 13:56:51,899 - ERROR - Error occurred: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='session_key']")
+
+2025-03-04 13:59:12,730 - INFO - Starting job application process.
+2025-03-04 13:59:26,130 - INFO - Waiting for user to confirm login page has loaded...
+2025-03-04 13:59:27,265 - INFO - Filling in login credentials.
+2025-03-04 13:59:57,282 - ERROR - Error occurred: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[name='session_key']")
+
+2025-03-04 14:02:42,068 - INFO - Starting job application process.
+2025-03-04 14:02:43,438 - INFO - Navigating to LinkedIn login page.
+2025-03-04 14:02:51,269 - INFO - Waiting for login form to appear...
+2025-03-04 14:03:19,797 - ERROR - Error occurred: Locator.is_visible: Error: strict mode violation: locator("text=Verify") resolved to 3 elements:
+    1) <code aria-hidden="true" id="bpr-guid-2225287">\u21b5  {"data":{"entityUrn":"urn:li:collectionRespons…</code> aka get_by_text("{\"data\":{\"entityUrn\":\"urn:li:collectionResponse:5qQXBdsNAX5GAyRCITAlJNKFNMN/")
+    2) <code aria-hidden="true" id="bpr-guid-2225297">\u21b5  {"data":{"data":{"feedDashGlobalNavs":{"logo":…</code> aka get_by_text("{\"data\":{\"data\":{\"feedDashGlobalNavs\":{\"logo\":{\"controlName\":\"nav_inbug\",\"logo")
+    3) <code aria-hidden="true" id="bpr-guid-2225306">\u21b5  {"data":{"entityUrn":"urn:li:collectionRespons…</code> aka get_by_text("{\"data\":{\"entityUrn\":\"urn:li:collectionResponse:LfR876KRdsmZHGfx2QmU88gy7j+")
+
+Call log:
+    - checking visibility of locator("text=Verify")
+
+2025-03-04 14:08:54,152 - INFO - Starting job application process.
+2025-03-04 14:08:55,689 - INFO - Navigating to LinkedIn login page.
+2025-03-04 14:09:03,722 - INFO - Waiting for login form to appear...
+2025-03-04 14:09:23,747 - ERROR - Error occurred: Page.wait_for_selector: Timeout 20000ms exceeded.
+Call log:
+  - waiting for locator("form") to be visible
+
+2025-03-04 14:10:33,802 - INFO - Starting job application process.
+2025-03-04 14:10:35,228 - INFO - Navigating to LinkedIn login page.
+2025-03-04 14:10:43,015 - INFO - Waiting for login form to appear...
+2025-03-04 14:10:53,488 - ERROR - Login input field not found! Exiting...
+2025-03-04 18:44:38,649 - INFO - Starting job application process.
+2025-03-04 18:44:39,611 - INFO - Navigating to LinkedIn login page.
+2025-03-04 18:44:50,309 - INFO - Filling in login credentials.
+2025-03-04 18:47:28,398 - INFO - Starting job application process.
+2025-03-04 18:47:28,888 - INFO - Navigating to LinkedIn login page.
+2025-03-04 18:47:36,278 - INFO - Filling in login credentials.
+2025-03-04 18:49:03,796 - INFO - Starting job application process.
+2025-03-04 18:49:04,538 - INFO - Navigating to LinkedIn login page.
+2025-03-04 18:49:13,419 - INFO - Starting job application process.
+2025-03-04 18:49:13,932 - INFO - Navigating to LinkedIn login page.
+2025-03-04 18:49:17,748 - INFO - Filling in login credentials.
+2025-03-04 18:49:17,863 - INFO - Login successful.
+2025-03-04 18:49:44,549 - INFO - Searching for jobs: software developer in south africa
+2025-03-04 18:59:04,136 - INFO - Starting job application process.
+2025-03-04 18:59:04,632 - INFO - Navigating to LinkedIn login page.
+2025-03-04 19:17:06,287 - INFO - Starting job application process.
+2025-03-04 19:17:07,221 - INFO - Navigating to LinkedIn login page.
+2025-03-04 19:17:14,840 - INFO - Filling in login credentials.
+2025-03-04 19:17:15,089 - INFO - Login successful.
+2025-03-04 19:17:44,993 - INFO - Starting job application process.
+2025-03-04 19:17:46,424 - INFO - Navigating to LinkedIn login page.
+2025-03-04 19:17:54,208 - INFO - Filling in login credentials.
+2025-03-04 19:17:54,978 - INFO - Login successful.
+2025-03-04 19:18:23,278 - INFO - Starting job application process.
+2025-03-04 19:18:24,578 - INFO - Navigating to LinkedIn login page.
+2025-03-04 19:21:48,168 - INFO - Starting job application process.
+2025-03-04 19:21:49,400 - INFO - Navigating to LinkedIn login page.
+2025-03-04 19:21:57,105 - INFO - Filling in login credentials.
+2025-03-04 19:21:57,723 - INFO - Login successful.
+2025-03-04 19:22:13,195 - INFO - Starting job application process.
+2025-03-04 19:22:14,524 - INFO - Navigating to LinkedIn login page.
+2025-03-04 19:22:33,914 - INFO - Filling in login credentials.
+2025-03-04 19:22:34,485 - INFO - Login successful.
+2025-03-04 19:27:28,604 - INFO - Starting job application process.
+2025-03-04 19:27:30,023 - INFO - Navigating to LinkedIn login page.
+2025-03-04 19:27:39,253 - INFO - Filling in login credentials.
+2025-03-04 19:27:39,948 - INFO - Login successful.
+2025-03-04 19:28:00,281 - INFO - Searching for jobs: Marketing in South Africa
+2025-03-04 19:32:08,057 - INFO - Starting job application process.
+2025-03-04 19:32:09,284 - INFO - Navigating to LinkedIn login page.
+2025-03-04 19:32:27,452 - INFO - Filling in login credentials.
+2025-03-04 19:32:27,903 - INFO - Login successful.
+2025-03-04 19:32:38,336 - INFO - Searching for jobs: python in gauteng
+2025-03-04 19:34:17,979 - INFO - Starting job application process.
+2025-03-04 19:34:19,247 - INFO - Navigating to LinkedIn login page.
+2025-03-04 19:34:37,598 - INFO - Filling in login credentials.
+2025-03-04 19:34:38,120 - INFO - Login successful.
+2025-03-04 19:34:45,375 - INFO - Searching for jobs: python in gauteng
+2025-03-04 21:11:47,429 - INFO - Starting job application process.
+2025-03-04 21:11:49,879 - INFO - Navigating to LinkedIn login page.
+2025-03-04 21:12:02,154 - INFO - Filling in login credentials.
+2025-03-04 21:12:02,400 - INFO - Login successful.
+2025-03-04 21:12:23,102 - INFO - Starting job application process.
+2025-03-04 21:12:24,318 - INFO - Navigating to LinkedIn login page.
+2025-03-04 21:12:40,341 - INFO - Filling in login credentials.
+2025-03-04 21:12:41,257 - INFO - Login successful.
+2025-03-04 21:13:02,700 - INFO - Starting job application process.
+2025-03-04 21:13:04,212 - INFO - Navigating to LinkedIn login page.
+2025-03-04 21:13:17,856 - INFO - Filling in login credentials.
+2025-03-04 21:13:18,374 - INFO - Login successful.
+2025-03-04 21:13:23,974 - INFO - Searching for jobs: Python Developer in gauteng
+2025-03-04 21:18:05,887 - INFO - Starting job application process.
+2025-03-04 21:18:07,139 - INFO - Navigating to LinkedIn login page.
+2025-03-04 21:18:26,929 - INFO - Starting job application process.
+2025-03-04 21:18:27,491 - ERROR - Error occurred: BrowserType.launch_persistent_context: Target page, context or browser has been closed
+Browser logs:
+
+<launching> C:\Program Files\Google\Chrome\Application\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=ImprovedCookieControls,LazyFrameLoading,GlobalMediaControls,DestroyProfileOnBrowserClose,MediaRouter,DialMediaRouteProvider,AcceptCHFrame,AutoExpandDetailsElement,CertificateTransparencyComponentUpdater,AvoidUnnecessaryBeforeUnloadCheckSync,Translate,HttpsUpgrades,PaintHolding,ThirdPartyStoragePartitioning,LensOverlay,PlzDedicatedWorker --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --no-sandbox --user-data-dir=C:\Users\Beauty\Desktop\Automating_LinkedIn\linkedin_session --remote-debugging-pipe about:blank
+<launched> pid=10472
+Call log:
+  - <launching> C:\Program Files\Google\Chrome\Application\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=ImprovedCookieControls,LazyFrameLoading,GlobalMediaControls,DestroyProfileOnBrowserClose,MediaRouter,DialMediaRouteProvider,AcceptCHFrame,AutoExpandDetailsElement,CertificateTransparencyComponentUpdater,AvoidUnnecessaryBeforeUnloadCheckSync,Translate,HttpsUpgrades,PaintHolding,ThirdPartyStoragePartitioning,LensOverlay,PlzDedicatedWorker --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --enable-automation --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --no-sandbox --user-data-dir=C:\Users\Beauty\Desktop\Automating_LinkedIn\linkedin_session --remote-debugging-pipe about:blank
+  -   - <launched> pid=10472
+
+2025-03-04 21:18:47,327 - INFO - Starting job application process.
+2025-03-04 21:18:48,693 - INFO - Navigating to LinkedIn login page.
+2025-03-04 21:21:22,280 - INFO - Starting job application process.
+2025-03-04 21:21:23,508 - INFO - Navigating to LinkedIn login page.
+2025-03-04 21:21:34,395 - INFO - Filling in login credentials.
+2025-03-04 21:21:34,902 - INFO - Login successful.
+2025-03-04 21:21:45,482 - INFO - Starting job application process.
+2025-03-04 21:21:46,936 - INFO - Navigating to LinkedIn login page.
+2025-03-04 21:22:02,279 - INFO - Filling in login credentials.
+2025-03-04 21:22:02,750 - INFO - Login successful.
+2025-03-04 21:22:05,254 - INFO - Searching for jobs: Python Developer in South Africa
+2025-03-04 21:22:11,889 - INFO - Job listings loaded successfully.
+2025-03-04 21:22:17,494 - ERROR - Error occurred: Locator.click: Error: strict mode violation: locator("button:has-text('Easy Apply')") resolved to 3 elements:
+    1) <button role="radio" type="button" aria-checked="false" aria-label="Easy Apply filter." id="searchFilter_applyWithLinkedin" class="artdeco-pill artdeco-pill--slate artdeco-pill--2 artdeco-pill--choice ember-view search-reusables__filter-pill-button">…</button> aka get_by_role("radio", name="Easy Apply filter.")
+    2) <button id="ember282" data-job-id="4165401961" data-live-test-job-apply-button="" aria-label="Easy Apply to Full Stack Developer at TaskFlow" class="jobs-apply-button\u21b5         artdeco-button artdeco-button--3 artdeco-button--primary ember-view">…</button> aka get_by_role("button", name="Easy Apply to Full Stack")
+    3) <button id="ember283" data-job-id="4165401961" data-live-test-job-apply-button="" aria-label="Easy Apply to Full Stack Developer at TaskFlow" class="jobs-apply-button\u21b5         artdeco-button artdeco-button--2 artdeco-button--primary ember-view">…</button> aka locator("#ember283")
+
+Call log:
+  - waiting for locator("button:has-text('Easy Apply')")
+
+2025-03-04 21:22:37,847 - INFO - Starting job application process.
+2025-03-04 21:22:39,228 - INFO - Navigating to LinkedIn login page.
+2025-03-04 21:22:54,926 - INFO - Filling in login credentials.
+2025-03-04 21:22:56,001 - INFO - Login successful.
+2025-03-04 21:22:58,051 - INFO - Searching for jobs: Python Developer in South Africa
+2025-03-04 21:24:15,432 - INFO - Starting job application process.
+2025-03-04 21:24:16,807 - INFO - Navigating to LinkedIn login page.
+2025-03-04 21:46:45,260 - INFO - Starting job application process.
+2025-03-04 21:46:47,145 - INFO - Navigating to LinkedIn login page.
+2025-03-04 21:46:55,845 - INFO - Filling in login credentials.
+2025-03-04 21:46:56,649 - INFO - Login successful.
+2025-03-04 21:47:00,198 - INFO - Searching for jobs: Python Developer in South Africa
+2025-03-04 21:47:08,353 - INFO - Job listings loaded successfully.
+2025-03-04 21:48:02,571 - INFO - Starting job application process.
+2025-03-04 21:48:03,856 - INFO - Navigating to LinkedIn login page.
+2025-03-04 21:48:18,093 - INFO - Filling in login credentials.
+2025-03-04 21:48:18,561 - INFO - Login successful.
+2025-03-04 21:48:24,624 - INFO - Searching for jobs: Python Developer in gauteng
+2025-03-04 21:53:57,190 - INFO - Starting job application process.
+2025-03-04 21:53:59,037 - INFO - Navigating to LinkedIn login page.
+2025-03-04 21:54:06,939 - INFO - Filling in login credentials.
+2025-03-04 21:54:07,984 - INFO - Login successful.
+2025-03-04 21:54:15,695 - INFO - Searching for jobs: Python Developer in South Africa
+2025-03-04 21:54:26,651 - INFO - Job listings loaded successfully.
+2025-03-04 21:54:41,107 - INFO - Starting job application process.
+2025-03-04 21:54:42,351 - INFO - Navigating to LinkedIn login page.
+2025-03-04 21:54:56,098 - INFO - Filling in login credentials.
+2025-03-04 21:54:56,627 - INFO - Login successful.
+2025-03-04 21:55:02,063 - INFO - Searching for jobs: Python Developer in gauteng
+2025-03-04 21:56:23,131 - INFO - Starting job application process.
+2025-03-04 21:56:25,425 - INFO - Navigating to LinkedIn login page.
+2025-03-04 21:56:34,092 - INFO - Filling in login credentials.
+2025-03-04 21:56:41,936 - INFO - Starting job application process.
+2025-03-04 21:56:43,347 - INFO - Navigating to LinkedIn login page.
+2025-03-04 21:56:51,287 - INFO - Filling in login credentials.
+2025-03-04 21:56:52,178 - INFO - Login successful.
+2025-03-04 21:56:57,650 - INFO - Searching for jobs: Python Developer in gauteng
+2025-03-04 21:57:09,527 - INFO - Job listings loaded successfully.
+2025-03-04 22:16:48,525 - INFO - Starting job application process.
+2025-03-04 22:16:49,892 - INFO - Navigating to LinkedIn login page.
+2025-03-04 22:16:58,246 - INFO - Filling in login credentials.
+2025-03-04 22:16:59,213 - INFO - Login successful.
+2025-03-04 22:17:05,696 - INFO - Searching for jobs: Python Developer in Gauteng
+2025-03-04 22:17:17,059 - INFO - Job listings loaded successfully.
