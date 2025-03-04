@@ -6,6 +6,7 @@ import random
 import os
 import config
 
+
 # Load credentials from config.py
 EMAIL = config.LINKEDIN_EMAIL or input("Enter your LinkedIn email: ")
 PASSWORD = config.LINKEDIN_PASSWORD or getpass.getpass("Enter your LinkedIn password: ")
