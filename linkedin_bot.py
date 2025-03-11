@@ -2,10 +2,8 @@ from playwright.sync_api import sync_playwright
 import time
 import logger
 import getpass
-import random
 import os
 import config
-
 
 # Load credentials from config.py
 EMAIL = config.LINKEDIN_EMAIL or input("Enter your LinkedIn email: ")
@@ -36,86 +34,136 @@ def login_to_linkedin(page):
         logger.log_info("Login successful.")
     except Exception as e:
         logger.log_error("Login failed. Please check credentials or CAPTCHA.")
-        page.screenshot(path="login_failed.png")
+       
         raise e
 
 def handle_captcha(page):
     """Handles CAPTCHA if it appears."""
-    captcha_elements = page.locator("div:has-text('security check')").count()
-    if captcha_elements > 0:
+    if page.locator("div:has-text('security check')").count() > 0:
         logger.log_error("CAPTCHA detected! Complete it manually.")
         input("Press Enter after completing the CAPTCHA and logging in manually...")
 
-def search_for_jobs(page, job_title, job_location):
+def search_for_jobs(page, job_title, job_location, experience_code):
     """Construct and navigate to job search page based on input."""
-    logger.log_info(f"Searching for jobs: {job_title} in {job_location if job_location else 'Worldwide'}")
-    job_search_url = f"https://www.linkedin.com/jobs/search/?keywords={job_title.replace(' ', '%20')}"
+    logger.log_info(f"Searching for jobs: {job_title} in {job_location if job_location else 'Worldwide'} at experience level {experience_code}")
+    
+    base_url = "https://www.linkedin.com/jobs/search/?keywords="
+    job_search_url = f"{base_url}{job_title.replace(' ', '%20')}"
+
     if job_location:
         job_search_url += f"&location={job_location.replace(' ', '%20')}"
-    
+
+    # Add experience level filter
+    job_search_url += f"&f_E={experience_code}"
+
     page.goto(job_search_url)
 
     # Wait for job listings to appear
     try:
-        page.wait_for_selector(".job-card-container", timeout=300000)
+        page.wait_for_selector(".job-card-container", timeout=10000)
         logger.log_info("Job listings loaded successfully.")
     except:
         logger.log_error("No job listings found. Exiting.")
         raise Exception("No job listings found.")
 
 def apply_to_jobs():
-    """Main function to automate job applications on LinkedIn."""
     with sync_playwright() as p:
         try:
             logger.log_info("Starting job application process.")
             browser = get_browser(p)
             page = browser.new_page()
 
-            # Step 1: Log into LinkedIn
             login_to_linkedin(page)
-
-            # Step 2: Handle CAPTCHA (if detected)
             handle_captcha(page)
+            
+            job_keyword = input(f"Enter job title (default: {default_job_title}): ") or default_job_title
+            job_location = input(f"Enter job location (default: {default_job_location} for worldwide): ") or default_job_location
+            
+            experience_levels = {"1": "Internship", "2": "Entry Level", "3": "Associate", "4": "Mid-Senior Level", "5": "Director", "6": "Executive"}
+            print("\nChoose an experience level:")
+            for key, value in experience_levels.items():
+                print(f"[{key}] {value}")
+            
+            selected_level = input("Enter the number of your experience level (default: Entry Level): ") or "2"
+            experience_code = selected_level if selected_level in experience_levels else "2"
 
-            # Step 3: Ask user for job title and location
-            job_keyword = input(f"Enter job title ({default_job_title} by default): ") or default_job_title
-            job_location = input(f"Enter job location ({default_job_location} for worldwide): ") or default_job_location
-
-            # Step 4: Search for jobs
-            search_for_jobs(page, job_keyword, job_location)
+            search_for_jobs(page, job_keyword, job_location, experience_code)
+            
+            job_list = page.locator(".job-card-container")
+            job_count_on_page = job_list.count()
+            if job_count_on_page == 0:
+                logger.log_error("No jobs available. Exiting.")
+                return
 
             job_count = 0
-            jobs = page.locator(".job-card-container").element_handles()
+            skipped_jobs = 0
+            max_jobs = 10
+            
+            for i in range(min(max_jobs, job_count_on_page)):
+                try:
+                    job = job_list.nth(i)
+                    job.hover()
+                    job.click()
+                    page.wait_for_selector("div.jobs-details__main-content", timeout=5000)
 
-            for job in jobs:
-                if job_count >= 10:
-                    break
-                job.click()
-                time.sleep(random.uniform(3, 5))  # Mimic human behavior
+                    easy_apply_buttons = page.locator("button:has-text('Easy Apply')")
+                    if easy_apply_buttons.count() > 0:
+                        logger.log_info("Easy Apply button found, clicking...")
+                        easy_apply_buttons.first.click()
+                        time.sleep(3)  # Allow form to load
 
-                # Check if "Easy Apply" is available
-                easy_apply_buttons = page.locator("button:has-text('Easy Apply')").all()
-                if easy_apply_buttons:
-                    for button in easy_apply_buttons:
-                        if "filter" not in button.get_attribute("aria-label").lower():
-                            button.click()
-                            time.sleep(2)
-                            break
+                        while True:  # Loop through multiple steps if needed
+                            next_buttons = page.locator("button:has-text('Next')")
+                            review_buttons = page.locator("button:has-text('Review')")
+                            submit_buttons = page.locator("button:has-text('Submit application')")
+                            required_fields = page.locator("input:required, textarea:required, select:required")
 
-                    # Checking if the submit button exists
-                    if page.locator("button:has-text('Submit application')").count() > 0:
-                        page.locator("button:has-text('Submit application')").click()
-                        job_count += 1
-                        logger.log_info(f"Applied to job {job_count}.")
-                        time.sleep(random.uniform(3, 6))
+                            if required_fields.count() > 0:
+                                logger.log_info("Job requires additional input. Skipping.")
+                                skipped_jobs += 1
+                                break  # Stop processing this job
 
-            logger.log_info(f"Job application process completed. Applied to {job_count} jobs.")
+                            if next_buttons.count() > 0:
+                                logger.log_info("Next button detected. Clicking it...")
+                                next_buttons.first.click()
+                                time.sleep(3)
+                                continue  # Continue to next step
+
+                            if review_buttons.count() > 0:
+                                logger.log_info("Review button detected. Clicking it...")
+                                review_buttons.first.click()
+                                time.sleep(3)
+                                continue  # Continue to submit step
+
+                            if submit_buttons.count() > 0:
+                                logger.log_info("Submit button found! Submitting application...")
+                                submit_buttons.first.click()
+                                job_count += 1
+                                logger.log_info(f"Successfully applied to {job_count} jobs.")
+                                break  # Exit loop after successful submission
+
+                            logger.log_error("Unexpected form behavior. Skipping job.")
+                            skipped_jobs += 1
+                            break  # Stop processing this job
+
+                        close_button = page.locator("button:has-text('Close')")
+                        if close_button.count() > 0:
+                            close_button.first.click()
+                    else:
+                        logger.log_info("No Easy Apply button found, skipping.")
+                        skipped_jobs += 1
+                
+                except Exception as e:
+                    logger.log_error(f"Error applying to job: {e}")
+            
+            logger.log_info(f"Job application process completed. Applied to {job_count} jobs, skipped {skipped_jobs} jobs.")
             browser.close()
 
         except Exception as e:
             logger.log_error(f"Error occurred: {e}")
             if 'browser' in locals():
                 browser.close()
+                
 
 # Run the script
 if __name__ == "__main__":

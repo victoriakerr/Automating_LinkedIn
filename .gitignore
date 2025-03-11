@@ -17,3 +17,15 @@ env/
 
 # Ignore environment variables (sensitive credentials)
 .env
+
+# Ignore all PNG and JPG screenshots
+*.png
+*.jpg
+*.jpeg
+
+# Ignore a specific screenshot file
+login_failed.png
+
+# Ignore a screenshots folder (if applicable)
+screenshots/
+
